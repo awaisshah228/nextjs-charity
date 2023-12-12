@@ -2,11 +2,14 @@
 'use client'
 import { createCheckoutSession } from '@/app/actions/stripe';
 import { useState, ChangeEvent, FormEvent } from 'react';
+import { toast } from 'react-toastify';
 
 const DonationForm = () => {
   const [amount, setAmount] = useState<string>('');
   const [customAmountVisible, setCustomAmountVisible] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false); // New state for loading
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
 
 
   const handleAmountClick = (selectedAmount: string) => {
@@ -31,9 +34,14 @@ const DonationForm = () => {
       // Handle form submission logic here
       console.log('Donation amount:', amount);
       // You can add further logic, like sending the amount to a server or updating state.
-    } catch (error) {
+    } catch (error:any) {
       // Handle error, maybe show an error message to the user
-      console.error('Error creating checkout session:', error);
+      // console.error('Error creating checkout session:', error?.message);
+      console.error("Error name:", error.message);
+      setErrorMessage(error.message);
+
+      toast.error(error.message)
+
     } finally {
       setLoading(false); // Set loading state to false after API call, whether it succeeds or fails
     }
@@ -92,10 +100,11 @@ const DonationForm = () => {
           />
         </label>
       )}
+     
 
 <button
         type="submit"
-        className="w-full mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-indigo-300"
+        className="w-full mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-indigo-300 h-[45px]"
         disabled={loading} // Disable the button when loading
       >
         {!loading  && 'Donate'}
@@ -121,6 +130,9 @@ const DonationForm = () => {
                     </>
                 )}
       </button>
+      {errorMessage && (
+        <div className="text-red-500 mt-2">{errorMessage}</div>
+      )}
     </form>
   );
 };

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.scss'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,6 +20,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}flex min-h-screen flex-col items-center justify-between md:p-24 p-6`}>{children}</body>
+      <ToastContainer
+position="bottom-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
+
     </html>
   )
 }
