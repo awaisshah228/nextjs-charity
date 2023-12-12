@@ -50,39 +50,39 @@ const DonationForm = () => {
 
   return (
     <form onSubmit={handleFormSubmit} className="max-w-md mx-auto mt-8 md:p-6 p-2 bg-gray-100 rounded-md">
-      <div className="flex space-x-4 justify-center">
+      <div className="flex gap-4 justify-evenly content-evenly md:flex-row flex-col  items-center">
         <button
           type="button"
           onClick={() => handleAmountClick('10')}
-          className={`py-2 px-4 rounded-md ${amount === '10' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
+          className={`py-2 px-4 w-full rounded-md ${amount === '10' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
         >
           $10
         </button>
         <button
           type="button"
           onClick={() => handleAmountClick('20')}
-          className={`py-2 px-4 rounded-md ${amount === '20' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
+          className={`py-2 px-4 w-full rounded-md ${amount === '20' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
         >
           $20
         </button>
         <button
           type="button"
           onClick={() => handleAmountClick('30')}
-          className={`py-2 px-4 rounded-md ${amount === '30' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
+          className={`py-2 px-4  w-full rounded-md ${amount === '30' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
         >
           $30
         </button>
         <button
           type="button"
           onClick={() => handleAmountClick('40')}
-          className={`py-2 px-4 rounded-md ${amount === '40' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
+          className={`py-2 px-4 w-full rounded-md ${amount === '40' ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
         >
           $40
         </button>
         <button
           type="button"
           onClick={() => handleCustomClick()}
-          className={`py-2 px-4 rounded-md ${customAmountVisible ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
+          className={`py-2 px-4  w-full rounded-md ${customAmountVisible ? 'bg-green-500 text-white' : 'bg-gray-300'}`}
         >
           Custom
         </button>

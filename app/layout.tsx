@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}flex min-h-screen flex-col items-center justify-between md:p-24 p-6`}>{children}
+      <body className={`${inter.className}flex min-h-screen flex-col items-center justify-between md:p-24 p-2`}>{children}
 
 
       <ToastContainer
