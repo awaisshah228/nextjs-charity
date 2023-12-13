@@ -30,6 +30,14 @@ const DonationForm = () => {
     e.preventDefault();
     setLoading(true); // Set loading state to true before API call
     try {
+      const donationAmount = Number(amount);
+
+      if (isNaN(donationAmount) || donationAmount <= 0) {
+        // Handle invalid amount, e.g., show an error message
+        setErrorMessage("Invalid donation amount");
+        toast.error("Invalid donation amount");
+        return
+      } 
       await createCheckoutSession(Number(amount))
       // Handle form submission logic here
       console.log('Donation amount:', amount);
@@ -131,7 +139,7 @@ const DonationForm = () => {
                 )}
       </button>
       {errorMessage && (
-        <div className="text-red-500 mt-2">{errorMessage}</div>
+        <div className="text-red-500 mt-2 flex justify-center">{errorMessage}</div>
       )}
     </form>
   );
